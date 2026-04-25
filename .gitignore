@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Obsidian (if used)
+.obsidian/
+
+# Build outputs (e.g. if ever rendered to HTML)
+_site/
+out/
