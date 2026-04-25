@@ -16,14 +16,14 @@ papers:
 
 ## What SMC Is
 
-Sequential Monte Carlo is importance sampling applied sequentially, with a resampling step to prevent weight degeneracy. It approximates a sequence of probability distributions $\pi_0, \pi_1, \ldots, \pi_T$ using a population of $N$ weighted samples called **particles**.
+Sequential Monte Carlo is importance sampling applied sequentially, with a resampling step to prevent weight degeneracy. It approximates a sequence of probability distributions $`\pi_0, \pi_1, \ldots, \pi_T`$ using a population of $N$ weighted samples called **particles**.
 
 The core algorithm (bootstrap particle filter):
 
-1. **Initialize**: draw $N$ particles $\{z_0^{(i)}\}_{i=1}^N$ from a prior $p(z_0)$, each with weight $w_0^{(i)} = 1/N$.
+1. **Initialize**: draw $N$ particles $`\{z_0^{(i)}\}_{i=1}^N`$ from a prior $`p(z_0)`$, each with weight $`w_0^{(i)} = 1/N`$.
 2. **At each time step $t$**:
    - **Propagate**: move each particle forward using the dynamics, $`\tilde{z}_t^{(i)} \sim p(z_t \mid z_{t-1}^{(i)})`$.
-   - **Weight**: assign each particle a weight based on how well it explains the new observation, $w_t^{(i)} \propto p(y_t \mid \tilde{z}_t^{(i)})$.
+   - **Weight**: assign each particle a weight based on how well it explains the new observation, $`w_t^{(i)} \propto p(y_t \mid \tilde{z}_t^{(i)})`$.
    - **Resample**: draw $N$ new particles from the current set with probability proportional to the weights, resetting all weights to $1/N$.
 
 The weighted particle set approximates the posterior:
@@ -34,14 +34,14 @@ The fundamental algorithmic move is simple: **kill unpromising particles, duplic
 
 ## The Resampling Step
 
-Resampling is what distinguishes SMC from naive importance sampling. Without it, after many sequential steps, one particle accumulates nearly all the weight ($w \approx 1$) while the rest become negligible ($w \approx 0$). The effective sample size collapses to $N_{\text{eff}} \approx 1$ even though $N$ particles are being maintained — a phenomenon called **weight degeneracy**.
+Resampling is what distinguishes SMC from naive importance sampling. Without it, after many sequential steps, one particle accumulates nearly all the weight ($w \approx 1$) while the rest become negligible ($w \approx 0$). The effective sample size collapses to $`N_{\text{eff}} \approx 1`$ even though $N$ particles are being maintained — a phenomenon called **weight degeneracy**.
 
 Resampling prevents this divergence by resetting weights to uniformity at each step, at the cost of reducing **diversity** — duplicated particles share the same ancestral history. The central tension of SMC is managing this tradeoff between weight degeneracy and particle impoverishment.
 
 Practical refinements include:
 
-- **Adaptive resampling**: only resample when $N_{\text{eff}} = 1/\sum_i (w^{(i)})^2$ drops below a threshold, avoiding unnecessary variance injection when weights are already near-uniform.
-- **Proposal design**: the bootstrap filter propagates particles using the prior dynamics $p(z_t \mid z_{t-1})$, ignoring the current observation entirely. Better proposals $q(z_t \mid z_{t-1}, y_t)$ that incorporate observation information reduce the number of particles needed for a good approximation.
+- **Adaptive resampling**: only resample when $`N_{\text{eff}} = 1/\sum_i (w^{(i)})^2`$ drops below a threshold, avoiding unnecessary variance injection when weights are already near-uniform.
+- **Proposal design**: the bootstrap filter propagates particles using the prior dynamics $`p(z_t \mid z_{t-1})`$, ignoring the current observation entirely. Better proposals $`q(z_t \mid z_{t-1}, y_t)`$ that incorporate observation information reduce the number of particles needed for a good approximation.
 
 ## Historical Origins
 
@@ -64,7 +64,7 @@ Furthermore, Monte Carlo is fundamentally an **integration** tool — it estimat
 AESMC combines SMC with amortized inference (auto-encoding), using deep neural networks to learn proposal distributions for SMC while simultaneously learning the generative model. The key ideas:
 
 - Use SMC (rather than importance sampling as in VAEs/IWAEs) as the marginal likelihood estimator for structured sequential models.
-- Learn the proposal distribution $q_\phi(z_t \mid z_{t-1}, y_t)$ using a neural network, amortizing the cost of proposal adaptation.
+- Learn the proposal distribution $`q_\phi(z_t \mid z_{t-1}, y_t)`$ using a neural network, amortizing the cost of proposal adaptation.
 - The SMC marginal likelihood estimator provides a tighter lower bound (ELBO) than importance sampling, enabling more effective model learning.
 
 AESMC targets **probabilistic state-space models** — latent states evolving with noisy observations:
@@ -90,7 +90,7 @@ The theoretical foundation is the **Feynman-Kac formula**, which connects the va
 
 $$V_t(x) = \log \mathbb{E}\left[e^{r(X_1)} \mid X_t = x\right]$$
 
-to a path integral weighted by a potential. The optimal steering modifies the SDE drift by $\sigma_t^2 \nabla V_t(x)$, but computing $\nabla V_t$ exactly is intractable. FK steering approximates it empirically using the particle population.
+to a path integral weighted by a potential. The optimal steering modifies the SDE drift by $`\sigma_t^2 \nabla V_t(x)`$, but computing $`\nabla V_t`$ exactly is intractable. FK steering approximates it empirically using the particle population.
 
 ### What Transfers from SMC and What Doesn't
 
@@ -118,6 +118,6 @@ This is the same curse of dimensionality that affects all Monte Carlo methods, r
 FK steering occupies a specific point in the design space of reward-aligned generation:
 
 - **Fine-tuning** (RLHF, reward-weighted training): modifies the model weights. Expensive training, risk of mode collapse, but amortized at inference time.
-- **Classifier/reward guidance**: adds $\nabla_x r(x_t)$ to the diffusion drift. Simple but requires differentiable rewards and can produce artifacts.
+- **Classifier/reward guidance**: adds $`\nabla_x r(x_t)`$ to the diffusion drift. Simple but requires differentiable rewards and can produce artifacts.
 - **Meta Flow Maps**: learns a stochastic flow map that amortizes posterior sampling, enabling efficient reward alignment without particles. Requires additional training but avoids the per-sample cost of running $N$ trajectories.
 - **FK steering**: no additional training, works with any reward function, but pays with $N\times$ inference cost. A classic **compute-at-inference** vs **compute-at-training** tradeoff.
