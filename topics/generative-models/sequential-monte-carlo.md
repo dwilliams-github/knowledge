@@ -22,7 +22,7 @@ The core algorithm (bootstrap particle filter):
 
 1. **Initialize**: draw $N$ particles $\{z_0^{(i)}\}_{i=1}^N$ from a prior $p(z_0)$, each with weight $w_0^{(i)} = 1/N$.
 2. **At each time step $t$**:
-   - **Propagate**: move each particle forward using the dynamics, $\tilde{z}_t^{(i)} \sim p(z_t \mid z_{t-1}^{(i)})$.
+   - **Propagate**: move each particle forward using the dynamics, $`\tilde{z}_t^{(i)} \sim p(z_t \mid z_{t-1}^{(i)})`$.
    - **Weight**: assign each particle a weight based on how well it explains the new observation, $w_t^{(i)} \propto p(y_t \mid \tilde{z}_t^{(i)})$.
    - **Resample**: draw $N$ new particles from the current set with probability proportional to the weights, resetting all weights to $1/N$.
 
