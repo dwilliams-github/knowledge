@@ -10,3 +10,4 @@ All research entries, sorted by topic.
 - [Sequential Monte Carlo](topics/generative-models/sequential-monte-carlo.md) — SMC fundamentals, AESMC, and FK steering of diffusion models; particle resampling as inference-time reward alignment
 - [Feynman-Kac Steering](topics/generative-models/feynman-kac-steering.md) — Singhal et al. (2025); inference-time reward alignment for diffusion models via FK-IPS particle resampling, no fine-tuning required
 - [KL Divergence](topics/generative-models/kl-divergence.md) — definition, mode-covering vs mode-seeking asymmetry, equivalence to MLE, measure-theoretic foundations, and role as the ELBO gap in VAEs
+- [Progressive Distillation](topics/generative-models/progressive-distillation.md) — Salimans & Ho (2022); iterative teacher-student halving to compress diffusion sampling from thousands of steps to 4; introduces v-prediction; precursor to flow map matching
