@@ -36,7 +36,7 @@ Each round halves the required step count. Starting from 8192 steps, the authors
 
 ## The Algorithm
 
-*[Algorithm figure — to be added]*
+![Progressive distillation algorithm](../../images/progressive-distillation-algorithm.png)
 
 The key differences from standard diffusion training (highlighted in green in the original paper's algorithm listing) are:
 
