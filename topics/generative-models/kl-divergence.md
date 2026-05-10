@@ -134,7 +134,7 @@ $$z = \mu_\phi(x) + \sigma_\phi(x) \odot \epsilon, \quad \epsilon \sim \mathcal{
 
 and evaluate the integrand. By constructing $z$ as a deterministic function of $x$ and $\epsilon$, gradients flow through $`\mu_\phi`$ and $`\sigma_\phi`$ because $\epsilon$ does not depend on $\phi$. The distribution $`q_\phi(z|x)`$ is normalized by construction — it is the pushforward of $\mathcal{N}(0, I)$ through the encoder, so $`\int q_\phi(z|x)\, dz = 1`$ automatically.
 
-When $`q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi^2(x))`$ and $p(z) = \mathcal{N}(0, I)$, the KL term $`D_{\text{KL}}(q_\phi(z|x) \| p(z))`$ has an analytic closed form, requiring no sampling at all. This KL penalty forces the encoder's latent distributions toward the standard Gaussian prior, decorrelating the latent dimensions — which, as a side effect, makes the latent space well-suited for downstream diffusion or flow matching models.
+When $`q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi^2(x))`$ and $p(z) = \mathcal{N}(0, I)$, the KL term $`D_{\text{KL}}(q_\phi(z|x) \| p(z))`$ has an analytic closed form, requiring no sampling at all. This KL penalty forces the encoder's latent distributions toward the standard Gaussian prior, decorrelating the latent dimensions — which, as a side effect, makes the latent space well-suited for downstream diffusion or [flow matching](stochastic-interpolants.md) models.
 
 ## Summary of Roles
 
