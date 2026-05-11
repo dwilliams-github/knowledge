@@ -5,6 +5,10 @@ Always convert arXiv IDs to clickable markdown links. Applies to both front matt
 
 `arXiv:NNNN.NNNNN` → `[arXiv:NNNN.NNNNN](https://arxiv.org/abs/NNNN.NNNNN)`
 
+## Index Organization
+
+`index.md` is organized by paper publication year, with entries sorted chronologically within each year. Entries with no single publication date (foundational concepts, multi-paper surveys) go under `## Foundations`. When adding a new entry, place it in the correct year section based on the primary paper's publication date, not the date the wiki entry was created.
+
 ## Images
 
 Images live in the top-level `images/` directory. VS Code is configured to paste clipboard images there automatically (`.vscode/settings.json`, gitignored).
