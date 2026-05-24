@@ -298,7 +298,7 @@ The product graph has $3 \times 3 = 9$ vertices, naturally arranged in a grid wh
 | Modular | 10 | Tensor diagonals plus two long diagonals connecting $(0,0) \leftrightarrow (2,2)$ and $(0,2) \leftrightarrow (2,0)$ |
 
 
-## Generalisations
+## Generalizations
 
 The standard definitions assume simple, undirected, unweighted graphs.
 The constructions extend naturally:
@@ -312,7 +312,7 @@ For the Cartesian product, a natural assignment copies the weight from whichever
 For the tensor product, the conventional choice is $`w = w_G \cdot w_H`$, consistent with the Kronecker product interpretation and with tensor products of operators in quantum mechanics.
 In some optimization settings, additive combination ($`w = w_G + w_H`$) is more natural.
 
-**Edge-labeled graphs.** Less standardised, but the products extend by pairing or combining labels.
+**Edge-labeled graphs.** Less standardized, but the products extend by pairing or combining labels.
 This arises in automata theory, where the tensor product of labeled transition systems corresponds to intersection of languages.
 
 
