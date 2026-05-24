@@ -4,7 +4,7 @@ topic: algorithms
 tags: [graphs, graph-theory, graph-products, linear-algebra, Kronecker-product]
 ---
 
-# Graph products: a reference for programmers and physicists
+# Graph products
 
 Graph products are constructions that combine two graphs $G$ and $H$ into a new, larger graph.
 All five products described here share the same vertex set — the Cartesian product of the vertex sets of the two **factors** (the input graphs):
