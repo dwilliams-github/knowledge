@@ -54,13 +54,11 @@ GitHub's markdown parser interprets underscores as italic syntax. Use the `` $`.
 
 ### Backslash-punctuation spacing
 
-GFM backslash escaping converts `\X` (backslash + any ASCII punctuation character) to bare `X` before KaTeX sees it. LaTeX spacing shorthands are all punctuation and are all affected:
+GFM backslash escaping converts `\X` (backslash + any ASCII punctuation character) to bare `X` before KaTeX sees it. LaTeX spacing shorthands are all ASCII punctuation and are all affected. Always use the named forms instead, in both inline and display math:
 
-| Avoid in inline math | Use instead |
+| Never use | Always use |
 |---|---|
 | `\,` (thin space, 3mu) | `\thinspace` |
 | `\:` (medium space, 4mu) | `\medspace` |
 | `\;` (thick space, 5mu) | `\thickspace` |
 | `\!` (negative thin space) | `\negthinspace` |
-
-Apply this to plain `$...$` inline math. The backtick form `` $`...`$ `` may already be protected — treat it as uncertain and apply `\thinspace` etc. there too if the formula is important.
