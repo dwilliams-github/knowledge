@@ -7,6 +7,7 @@
 <!-- Entries sorted alphabetically by concept name. -->
 
 - [Graph Theory Glossary](topics/algorithms/graph-theory-glossary.md) — definitions of core graph-theoretic terms: graph, adjacency, degree, path, bipartite, adjacency matrix, and product-specific vocabulary
+- [Maximum Common Induced Subgraph](topics/algorithms/maximum-common-induced-subgraph.md) — reduction to maximum clique via the modular product; Bron–Kerbosch algorithm; complexity and practical seed-ordering heuristics
 - [Graph Products](topics/algorithms/graph-products.md) — Cartesian, tensor, strong, lexicographic, and modular products; edge predicates, edge counts, adjacency matrix decompositions, and the $P_3$ worked example
 
 ## Foundations
