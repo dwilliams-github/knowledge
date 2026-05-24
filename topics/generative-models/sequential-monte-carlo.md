@@ -28,7 +28,7 @@ The core algorithm (bootstrap particle filter):
 
 The weighted particle set approximates the posterior:
 
-$$p(z_t \mid y_{1:t}) \approx \sum_{i=1}^N w_t^{(i)}\, \delta(z_t - z_t^{(i)})$$
+$$p(z_t \mid y_{1:t}) \approx \sum_{i=1}^N w_t^{(i)}\thinspace \delta(z_t - z_t^{(i)})$$
 
 The fundamental algorithmic move is simple: **kill unpromising particles, duplicate promising ones**. This is natural selection applied to hypothesis tracking.
 

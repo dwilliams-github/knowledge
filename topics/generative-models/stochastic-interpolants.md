@@ -23,7 +23,7 @@ Follow-up: **[Stochastic Interpolants: A Unifying Framework for Flows and Diffus
 
 The framework begins with a remarkably simple object. Given samples from a noise distribution $`I_0 \sim p_0`$ (typically $\mathcal{N}(0, I)$) and a data distribution $`I_1 \sim p_1`$, define a stochastic process:
 
-$$I_t = \alpha_t \, I_0 + \beta_t \, I_1$$
+$$I_t = \alpha_t \thinspace I_0 + \beta_t \thinspace I_1$$
 
 where $`\alpha_t, \beta_t`$ are smooth interpolation coefficients satisfying boundary conditions $`\alpha_0 = \beta_1 = 1`$ and $`\alpha_1 = \beta_0 = 0`$.
 
@@ -37,7 +37,7 @@ The answer is an ODE with velocity field defined as the conditional expectation:
 
 $$v_t(x) = \mathbb{E}\left[\dot{I}_t \mid I_t = x\right]$$
 
-where $`\dot{I}_t = \dot{\alpha}_t \, I_0 + \dot{\beta}_t \, I_1`$ is the time derivative of the interpolant. The ODE:
+where $`\dot{I}_t = \dot{\alpha}_t \thinspace I_0 + \dot{\beta}_t \thinspace I_1`$ is the time derivative of the interpolant. The ODE:
 
 $$\frac{dx}{dt} = v_t(x)$$
 
@@ -47,15 +47,15 @@ generates marginals $`\rho_t`$ matching those of $`I_t`$ at every $t$, and in pa
 
 The velocity field is learned by a neural network $\hat{v}(t, x)$ via a regression loss:
 
-$$\mathcal{L} = \int_0^1 \mathbb{E}\left\|\hat{v}(t, I_t) - \dot{I}_t\right\|^2 \, dt$$
+$$\mathcal{L} = \int_0^1 \mathbb{E}\left\|\hat{v}(t, I_t) - \dot{I}_t\right\|^2 \thinspace dt$$
 
 The training loop is simulation-free:
 
 1. Sample $`x_1 \sim p_1`$ (data point from the dataset)
 2. Sample $`x_0 \sim p_0`$ (noise sample, typically $\mathcal{N}(0, I)$)
 3. Sample $t \sim \text{Uniform}[0, 1]$
-4. Compute $`I_t = \alpha_t \, x_0 + \beta_t \, x_1`$ (closed-form arithmetic)
-5. Compute $`\dot{I}_t = \dot{\alpha}_t \, x_0 + \dot{\beta}_t \, x_1`$ (closed-form arithmetic)
+4. Compute $`I_t = \alpha_t \thinspace x_0 + \beta_t \thinspace x_1`$ (closed-form arithmetic)
+5. Compute $`\dot{I}_t = \dot{\alpha}_t \thinspace x_0 + \dot{\beta}_t \thinspace x_1`$ (closed-form arithmetic)
 6. Minimize $`\|\hat{v}(t, I_t) - \dot{I}_t\|^2`$
 
 No ODE/SDE simulation is needed during training. The interpolant serves as scaffolding to generate cheap training pairs, then is discarded at inference time.

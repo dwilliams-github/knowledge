@@ -36,11 +36,11 @@ The framework requires no additional training and works with arbitrary reward fu
 
 The name derives from the Feynman-Kac formula in stochastic analysis, which connects the solution of a PDE with a potential term:
 
-$$\frac{\partial u}{\partial t} + \frac{1}{2}\sigma^2 \nabla^2 u + V(x)\, u = 0$$
+$$\frac{\partial u}{\partial t} + \frac{1}{2}\sigma^2 \nabla^2 u + V(x)\thinspace u = 0$$
 
 to an expectation over paths of a stochastic process, weighted by a multiplicative functional:
 
-$$u(x, t) = \mathbb{E}\left[f(X_T)\, \exp\!\left(-\int_t^T V(X_s)\, ds\right) \;\bigg|\; X_t = x\right]$$
+$$u(x, t) = \mathbb{E}\left[f(X_T)\thinspace \exp\!\left(-\int_t^T V(X_s)\thinspace ds\right) \;\bigg|\; X_t = x\right]$$
 
 This is essentially a path integral formulation — sampling trajectories weighted by a potential.
 

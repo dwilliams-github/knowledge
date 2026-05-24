@@ -12,7 +12,7 @@ source: agent session 2026-05-02
 
 The Kullback-Leibler divergence between two probability distributions $p$ and $q$ over the same domain is:
 
-$$D_{\text{KL}}(p \| q) = \int p(x) \log \frac{p(x)}{q(x)}\, dx$$
+$$D_{\text{KL}}(p \| q) = \int p(x) \log \frac{p(x)}{q(x)}\thinspace dx$$
 
 It is non-negative ($`D_{\text{KL}} \geq 0`$), equals zero if and only if $p = q$, is not symmetric ($`D_{\text{KL}}(p \| q) \neq D_{\text{KL}}(q \| p)`$), and does not satisfy the triangle inequality. It is therefore a divergence, not a metric.
 
@@ -39,7 +39,7 @@ $$\max_\theta \frac{1}{N}\sum_i \log p_\theta(x_i)$$
 
 So maximum likelihood is a special case of KL minimization where one distribution is empirical (data points). KL divergence is more general: it compares any two distributions, whether empirical or not. This is why the generative modeling literature prefers KL — problems frequently involve comparing model distributions against model distributions (e.g., an approximate posterior against a true posterior), where maximum likelihood has no natural formulation.
 
-Both KL divergence and maximum likelihood share the same computational bottleneck: if the model is $`p_\theta(x) = \frac{1}{Z(\theta)} e^{-E_\theta(x)}`$, evaluating $`\log p_\theta`$ requires the normalization constant $`Z(\theta) = \int e^{-E_\theta(x)}\, dx`$, which is generally intractable. KL divergence does not solve this problem — it has it. The solutions come from reformulating objectives to avoid evaluating the density entirely (score matching, the ELBO, or structural normalization via pushforward maps).
+Both KL divergence and maximum likelihood share the same computational bottleneck: if the model is $`p_\theta(x) = \frac{1}{Z(\theta)} e^{-E_\theta(x)}`$, evaluating $`\log p_\theta`$ requires the normalization constant $`Z(\theta) = \int e^{-E_\theta(x)}\thinspace dx`$, which is generally intractable. KL divergence does not solve this problem — it has it. The solutions come from reformulating objectives to avoid evaluating the density entirely (score matching, the ELBO, or structural normalization via pushforward maps).
 
 ## KL Divergence and Measures
 
@@ -47,7 +47,7 @@ Both KL divergence and maximum likelihood share the same computational bottlenec
 
 KL divergence is conventionally written as:
 
-$$D_{\text{KL}}(p \| q) = \int p(x) \log \frac{p(x)}{q(x)}\, dx$$
+$$D_{\text{KL}}(p \| q) = \int p(x) \log \frac{p(x)}{q(x)}\thinspace dx$$
 
 The variable of integration is implied by the arguments — you integrate over whatever domain $p$ and $q$ share. For example:
 
@@ -79,11 +79,11 @@ A **probability measure** adds $\mu(\Omega) = 1$.
 
 The key distinction: a measure assigns sizes to **sets**, not values to **points**. A density $p(x)$ is a representation of a measure with respect to a reference measure (typically Lebesgue):
 
-$$\mu(A) = \int_A p(x)\, dx$$
+$$\mu(A) = \int_A p(x)\thinspace dx$$
 
 The density depends on coordinates; the measure does not. KL divergence, defined at the level of measures, inherits this coordinate independence.
 
-A measure requires only a measurable space (a set with a $\sigma$-algebra), not a metric space. However, on a Riemannian manifold, the metric induces a canonical volume form $\sqrt{\det(g)}\, dx^1 \wedge \cdots \wedge dx^n$, which provides the natural reference measure for integration. In flat $\mathbb{R}^n$, this reduces to the Lebesgue measure $dx$, and the distinction between metric-induced and abstract measure theory is invisible.
+A measure requires only a measurable space (a set with a $\sigma$-algebra), not a metric space. However, on a Riemannian manifold, the metric induces a canonical volume form $\sqrt{\det(g)}\thinspace dx^1 \wedge \cdots \wedge dx^n$, which provides the natural reference measure for integration. In flat $\mathbb{R}^n$, this reduces to the Lebesgue measure $dx$, and the distinction between metric-induced and abstract measure theory is invisible.
 
 ## Connection to ELBO
 
@@ -91,7 +91,7 @@ A measure requires only a measurable space (a set with a $\sigma$-algebra), not 
 
 The goal is to maximize $`\log p_\theta(x)`$, the log-likelihood of observed data under a latent variable model. This requires marginalizing over latents:
 
-$$\log p_\theta(x) = \log \int p_\theta(x, z)\, dz$$
+$$\log p_\theta(x) = \log \int p_\theta(x, z)\thinspace dz$$
 
 which is intractable for complex models.
 
@@ -132,7 +132,7 @@ The expectation is over $`q_\phi(z|x)`$, the approximate posterior. This is esti
 
 $$z = \mu_\phi(x) + \sigma_\phi(x) \odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)$$
 
-and evaluate the integrand. By constructing $z$ as a deterministic function of $x$ and $\epsilon$, gradients flow through $`\mu_\phi`$ and $`\sigma_\phi`$ because $\epsilon$ does not depend on $\phi$. The distribution $`q_\phi(z|x)`$ is normalized by construction — it is the pushforward of $\mathcal{N}(0, I)$ through the encoder, so $`\int q_\phi(z|x)\, dz = 1`$ automatically.
+and evaluate the integrand. By constructing $z$ as a deterministic function of $x$ and $\epsilon$, gradients flow through $`\mu_\phi`$ and $`\sigma_\phi`$ because $\epsilon$ does not depend on $\phi$. The distribution $`q_\phi(z|x)`$ is normalized by construction — it is the pushforward of $\mathcal{N}(0, I)$ through the encoder, so $`\int q_\phi(z|x)\thinspace dz = 1`$ automatically.
 
 When $`q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi^2(x))`$ and $p(z) = \mathcal{N}(0, I)$, the KL term $`D_{\text{KL}}(q_\phi(z|x) \| p(z))`$ has an analytic closed form, requiring no sampling at all. This KL penalty forces the encoder's latent distributions toward the standard Gaussian prior, decorrelating the latent dimensions — which, as a side effect, makes the latent space well-suited for downstream diffusion or [flow matching](stochastic-interpolants.md) models.
 
