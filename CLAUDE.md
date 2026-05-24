@@ -7,7 +7,27 @@ Always convert arXiv IDs to clickable markdown links. Applies to both front matt
 
 ## Index Organization
 
-`index.md` is organized by paper publication year, with entries sorted chronologically within each year. Entries with no single publication date (foundational concepts, multi-paper surveys) go under `## Foundations`. When adding a new entry, place it in the correct year section based on the primary paper's publication date, not the date the wiki entry was created.
+`index.md` has three kinds of sections:
+
+- **`## Foundations`** — ML/generative-model concepts with no single publication date (surveys, foundational math).
+- **`## Algorithms`** — algorithm entries (graph theory, data structures, etc.). These are concept-based, not paper-based.
+- **`## YYYY` year sections** — paper-centric entries, sorted chronologically within each year by publication date.
+
+When adding an ML/paper entry, place it in the correct year section based on the primary paper's publication date, not the date the wiki entry was created.
+
+## Algorithm Entries
+
+Algorithm entries live in `topics/algorithms/` (flat — no subtopic subfolders). They are concept-based rather than paper-based, so they appear in `## Algorithms` in `index.md`.
+
+Frontmatter for algorithm entries omits `date` (no meaningful publication date):
+
+```markdown
+---
+title: <entry title>
+topic: algorithms
+tags: [tag1, tag2]
+---
+```
 
 ## Images
 

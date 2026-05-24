@@ -1,8 +1,13 @@
 # Index
 
-All research entries, organized by paper publication date.
+<!-- ML/paper entries are organized by publication year; algorithm entries go in ## Algorithms; foundational ML concepts go in ## Foundations. -->
 
-<!-- Within each year, entries are sorted chronologically. Foundational entries with no single publication date go at the top. -->
+## Algorithms
+
+<!-- Entries sorted alphabetically by concept name. -->
+
+- [Graph Theory Glossary](topics/algorithms/graph-theory-glossary.md) — definitions of core graph-theoretic terms: graph, adjacency, degree, path, bipartite, adjacency matrix, and product-specific vocabulary
+- [Graph Products](topics/algorithms/graph-products.md) — Cartesian, tensor, strong, lexicographic, and modular products; edge predicates, edge counts, adjacency matrix decompositions, and the $P_3$ worked example
 
 ## Foundations
 
