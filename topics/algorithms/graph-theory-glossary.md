@@ -31,6 +31,8 @@ Each edge connects two vertices.
 
 **Connected.** A graph is connected if every pair of vertices has a path between them.
 
+**Clique.** A subset of vertices that are all mutually adjacent — every pair is connected by an edge. A clique of size $k$ is sometimes written $K_k$. The **maximum clique** is the largest clique in a graph; finding it is NP-hard.
+
 **Bipartite.** A graph whose vertices can be partitioned into two sets such that every edge connects a vertex in one set to a vertex in the other.
 
 **Adjacency matrix.** The $|V| \times |V|$ matrix $A$ where $`A_{ij} = 1`$ (or the edge weight) if vertices $i$ and $j$ are adjacent, and 0 otherwise.
