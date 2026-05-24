@@ -55,7 +55,7 @@ The variable of integration is implied by the arguments — you integrate over w
 - $`D_{\text{KL}}(p_{\text{data}}(x) \| p_\theta(x))`$ integrates over $x$
 - $`D_{\text{KL}}(p(x, z) \| q(x, z))`$ integrates over $(x, z)$ jointly
 
-This convention can appear sloppy, particularly to those accustomed to writing $\int f(x)\, dx$ with the variable always explicit. However, it is rescued by a deeper mathematical fact.
+This convention can appear sloppy, particularly to those accustomed to writing $\int f(x)\thinspace dx$ with the variable always explicit. However, it is rescued by a deeper mathematical fact.
 
 ### Reparameterization Invariance
 
@@ -63,7 +63,7 @@ Under a change of variables $x \to x' = f(x)$, densities transform with a Jacobi
 
 $$p'(x') = p(x) \left|\det \frac{\partial x}{\partial x'}\right|$$
 
-In the KL divergence, the Jacobians cancel in the ratio $p'/q' = p/q$, and the measure transforms as $p'(x')\, dx' = p(x)\, dx$. The result is the same regardless of parameterization.
+In the KL divergence, the Jacobians cancel in the ratio $p'/q' = p/q$, and the measure transforms as $p'(x')\thinspace dx' = p(x)\thinspace dx$. The result is the same regardless of parameterization.
 
 This is because KL divergence is fundamentally defined between two **measures**, not two density functions. The density $p(x)$ depends on coordinates; the KL between the underlying measures does not. The implicit integration variable is therefore not an ambiguity — any valid coordinate system gives the same answer.
 
@@ -105,7 +105,7 @@ This lower bound $\mathcal{L}$ is the **Evidence Lower Bound (ELBO)**.
 
 ### The Gap Is a KL Divergence
 
-Expanding $p_\theta(x, z) = p_\theta(z|x)\, p_\theta(x)$:
+Expanding $`p_\theta(x, z) = p_\theta(z|x)\thinspace p_\theta(x)`$:
 
 $$\mathcal{L} = \log p_\theta(x) + \mathbb{E}_{q_\phi(z|x)}\left[\log \frac{p_\theta(z|x)}{q_\phi(z|x)}\right]$$
 

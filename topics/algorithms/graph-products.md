@@ -284,7 +284,7 @@ $$E(G \times H) \;\subset\; E(G \diamond H)$$
 
 ## Concrete example: $`P_3 \square P_3`$
 
-Let both factors be the path graph on three vertices: $`G = H = P_3`$, with $V = \{0, 1, 2\}$ and $E = \{\{0,1\},\, \{1,2\}\}$.
+Let both factors be the path graph on three vertices: $`G = H = P_3`$, with $V = \{0, 1, 2\}$ and $E = \{\{0,1\}, \{1,2\}\}$.
 The product graph has $3 \times 3 = 9$ vertices, naturally arranged in a grid where the first component indexes the column and the second component indexes the row.
 
 ![Figure 1: all five graph products of P₃ with itself](../../images/graph-products-figure.svg)
