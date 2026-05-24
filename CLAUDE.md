@@ -42,7 +42,25 @@ Images live in the top-level `images/` directory. VS Code is configured to paste
 
 If the user asks to be reminded of this procedure, describe the steps above.
 
-## Inline LaTeX with Underscores
-GitHub's markdown parser can interpret underscores inside `$...$` as italic syntax, breaking math rendering. Use the `$`...`$` backtick form for any inline formula containing underscores:
+## Inline LaTeX
 
-`$\tilde{z}_t^{(i)}$` → `$`\tilde{z}_t^{(i)}`$`
+GitHub's markdown pipeline runs **before** math rendering, so certain markdown syntax is processed inside `$...$` inline math and can corrupt the formula. Display math (`$$...$$`) is not affected by either issue below.
+
+### Underscores
+
+GitHub's markdown parser interprets underscores as italic syntax. Use the `` $`...`$ `` backtick form for any inline formula containing underscores:
+
+`$\tilde{z}_t^{(i)}$` → `` $`\tilde{z}_t^{(i)}`$ ``
+
+### Backslash-punctuation spacing
+
+GFM backslash escaping converts `\X` (backslash + any ASCII punctuation character) to bare `X` before KaTeX sees it. LaTeX spacing shorthands are all punctuation and are all affected:
+
+| Avoid in inline math | Use instead |
+|---|---|
+| `\,` (thin space, 3mu) | `\thinspace` |
+| `\:` (medium space, 4mu) | `\medspace` |
+| `\;` (thick space, 5mu) | `\thickspace` |
+| `\!` (negative thin space) | `\negthinspace` |
+
+Apply this to plain `$...$` inline math. The backtick form `` $`...`$ `` may already be protected — treat it as uncertain and apply `\thinspace` etc. there too if the formula is important.
