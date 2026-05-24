@@ -1,5 +1,8 @@
 # Claude Instructions for this Wiki
 
+## Language
+Use American English spelling throughout (e.g. "generalize" not "generalise").
+
 ## arXiv Links
 Always convert arXiv IDs to clickable markdown links. Applies to both front matter and body text:
 
