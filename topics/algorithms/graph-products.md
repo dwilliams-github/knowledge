@@ -65,13 +65,13 @@ def adjacent_in_product(u1, v1, u2, v2):
 Throughout this section, $G$ has $n$ vertices and $`e_G`$ edges; $H$ has $m$ vertices and $`e_H`$ edges.
 
 
-### Cartesian product $G \square H$
+### Cartesian product $G \thinspace\square\thinspace H$
 
 **Predicate.** Exactly one component traverses an edge in its factor; the other stays fixed.
 
 **Formal definition.**
 
-$$(u_1, v_1) \sim_{G \square H} (u_2, v_2) \iff (u_1 = u_2 \;\land\; v_1 \sim_H v_2) \;\lor\; (u_1 \sim_G u_2 \;\land\; v_1 = v_2)$$
+$$(u_1, v_1) \sim_{G \thinspace\square\thinspace H} (u_2, v_2) \iff (u_1 = u_2 \;\land\; v_1 \sim_H v_2) \;\lor\; (u_1 \sim_G u_2 \;\land\; v_1 = v_2)$$
 
 **As code.**
 
@@ -82,21 +82,21 @@ def cartesian_adjacent(u1, v1, u2, v2):
 
 **Edge count.**
 
-$$|E(G \square H)| = m \cdot e_G + n \cdot e_H$$
+$$|E(G \thinspace\square\thinspace H)| = m \cdot e_G + n \cdot e_H$$
 
 **Key properties.**
 Commutative and associative.
 The adjacency matrix decomposes as a Kronecker sum:
 
-$$A^{G \square H} = A^{(G)} \otimes I_m + I_n \otimes A^{(H)}$$
+$$A^{G \thinspace\square\thinspace H} = A^{(G)} \otimes I_m + I_n \otimes A^{(H)}$$
 
 This is the same structure as combining two independent Hamiltonians on different subsystems.
 The spectrum of the adjacency matrix is $`\{\lambda_i + \mu_j\}`$ where $`\lambda_i`$ and $`\mu_j`$ are eigenvalues of $G$ and $H$.
-The graph Laplacian decomposes the same way: $`L(G \square H) = L(G) \otimes I_m + I_n \otimes L(H)`$.
+The graph Laplacian decomposes the same way: $`L(G \thinspace\square\thinspace H) = L(G) \otimes I_m + I_n \otimes L(H)`$.
 
 Every connected graph has a unique prime factorization with respect to the Cartesian product (the Sabidussi–Vizing theorem), and the factorization can be found in polynomial time.
 
-**Example.** $`P_m \square P_n`$ is the $m \times n$ lattice graph. The hypercube $`Q_n`$ is the Cartesian product of $n$ copies of $`K_2`$. This is the product implicit in discretizing a PDE on a rectangular grid.
+**Example.** $`P_m \thinspace\square\thinspace P_n`$ is the $m \times n$ lattice graph. The hypercube $`Q_n`$ is the Cartesian product of $n$ copies of $`K_2`$. This is the product implicit in discretizing a PDE on a rectangular grid.
 
 
 ### Tensor product $G \times H$
@@ -160,7 +160,7 @@ $$|E(G \boxtimes H)| = m \cdot e_G + n \cdot e_H + 2 \cdot e_G \cdot e_H$$
 **Relationship to Cartesian and tensor products.**
 The edge set is exactly the union:
 
-$$E(G \boxtimes H) = E(G \square H) \;\cup\; E(G \times H)$$
+$$E(G \boxtimes H) = E(G \thinspace\square\thinspace H) \;\cup\; E(G \times H)$$
 
 This can be verified by distributing the first two clauses of the predicate using $\land$ over $\lor$, which yields four terms — one for the tensor product, two for the Cartesian product, and one self-loop term eliminated by the $\lnot$ clause.
 The edge count formula is visibly the sum of the Cartesian and tensor formulas.
@@ -248,7 +248,7 @@ The maximum common induced subgraph problem therefore reduces to maximum clique 
 
 | Product | Symbol | Predicate (words) | Boolean analogy |
 |---|---|---|---|
-| Cartesian | $G \square H$ | Exactly one component moves | XOR-like (with equality) |
+| Cartesian | $G \thinspace\square\thinspace H$ | Exactly one component moves | XOR-like (with equality) |
 | Tensor | $G \times H$ | Both components move | AND |
 | Strong | $G \boxtimes H$ | At least one component moves | OR |
 | Lexicographic | $G[H]$ | Outer moves (don't care), or inner moves (outer fixed) | Outer dominates |
@@ -277,12 +277,12 @@ The maximum common induced subgraph problem therefore reduces to maximum clique 
 ### Set-theoretic relationships
 
 $$E(G \times H) \;\subset\; E(G \boxtimes H)$$
-$$E(G \square H) \;\subset\; E(G \boxtimes H)$$
-$$E(G \boxtimes H) \;=\; E(G \square H) \;\cup\; E(G \times H)$$
+$$E(G \thinspace\square\thinspace H) \;\subset\; E(G \boxtimes H)$$
+$$E(G \boxtimes H) \;=\; E(G \thinspace\square\thinspace H) \;\cup\; E(G \times H)$$
 $$E(G \times H) \;\subset\; E(G \diamond H)$$
 
 
-## Concrete example: $`P_3 \square P_3`$
+## Concrete example: $`P_3 \thinspace\square\thinspace P_3`$
 
 Let both factors be the path graph on three vertices: $`G = H = P_3`$, with $V = \{0, 1, 2\}$ and $E = \{\{0,1\}, \{1,2\}\}$.
 The product graph has $3 \times 3 = 9$ vertices, naturally arranged in a grid where the first component indexes the column and the second component indexes the row.
