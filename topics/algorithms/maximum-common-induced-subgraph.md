@@ -17,28 +17,7 @@ But it reduces cleanly to another well-studied NP-hard problem — maximum cliqu
 
 ## The modular product
 
-The **modular product** $G \diamond H$ is a graph on the vertex set $V(G) \times V(H)$.
-Two vertices $`(u_1, v_1)`$ and $`(u_2, v_2)`$ are adjacent when their adjacency relations **agree** in both factors:
-
-$$(u_1, v_1) \sim_{G \diamond H} (u_2, v_2) \iff \big(u_1 \sim_G u_2 \thickspace\land\thickspace v_1 \sim_H v_2\big) \thickspace\lor\thickspace \big(u_1 \not\sim_G u_2 \thickspace\land\thickspace v_1 \not\sim_H v_2\big)$$
-
-with $u_1 \neq u_2$ and $v_1 \neq v_2$.
-
-The predicate is XNOR on the two adjacency relations:
-
-$$\text{adj}_G(u_1, u_2) = \text{adj}_H(v_1, v_2)$$
-
-In code:
-
-```python
-def modular_adjacent(u1, v1, u2, v2):
-    if u1 == u2 or v1 == v2:
-        return False
-    return adj_G(u1, u2) == adj_H(v1, v2)
-```
-
-If $G$ has $n$ vertices and $H$ has $m$ vertices, the modular product has $n \cdot m$ vertices.
-See [Graph Products](graph-products.md) for full details on the modular product and its relationship to the other standard graph products.
+The [modular product](graph-products.md#modular-product-g-diamond-h) $G \diamond H$ has vertex set $V(G) \times V(H)$, with two vertices $`(u_1, v_1)`$ and $`(u_2, v_2)`$ adjacent when their adjacency relations agree in both factors (XNOR): both pairs adjacent, or both pairs non-adjacent. Vertices sharing a component are never adjacent.
 
 
 ## Why cliques correspond to common subgraphs
