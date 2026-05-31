@@ -89,7 +89,7 @@ With specific choices of $`\alpha_t`$ and $`\beta_t`$ (e.g., variance-preserving
 Liu et al.'s rectified flow (2022) uses the same linear interpolation with $`\alpha_t = 1-t`$, $`\beta_t = t`$. This is a specific instantiation of the interpolant framework. Rectified flow additionally introduces the Reflow procedure, which iteratively refines the noise-data coupling to straighten marginal ODE trajectories.
 
 ### Relationship to Flow Map Matching and Progressive Distillation
-Boffi, Albergo, and Vanden-Eijnden (2024) extend the interpolant framework to learn two-time flow maps $`X_{s,t}`$ for arbitrary $(s, t)$, enabling post-training selection of step count. [Progressive distillation](progressive-distillation.md) (Salimans & Ho, 2022) is recovered as a special case: each distillation round implicitly learns the flow map composition $`X_{s,t} = X_{u,t} \circ X_{s,u}`$ via teacher-student training, but commits to a fixed step count at training time.
+[Boffi, Albergo, and Vanden-Eijnden (2024)](flow-map-matching.md) extend the interpolant framework to learn two-time flow maps $`X_{s,t}`$ for arbitrary $(s, t)$, enabling post-training selection of step count. [Progressive distillation](progressive-distillation.md) (Salimans & Ho, 2022) is recovered as a special case: each distillation round implicitly learns the flow map composition $`X_{s,t} = X_{u,t} \circ X_{s,u}`$ via teacher-student training, but commits to a fixed step count at training time.
 
 ## Design Degrees of Freedom
 

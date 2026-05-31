@@ -20,6 +20,10 @@
 - [Progressive Distillation](topics/generative-models/progressive-distillation.md) — Salimans & Ho (Feb 2022); iterative teacher-student halving to compress diffusion sampling from thousands of steps to 4; introduces v-prediction; precursor to flow map matching
 - [Stochastic Interpolants](topics/generative-models/stochastic-interpolants.md) — Albergo & Vanden-Eijnden (Sep 2022 / Mar 2023); unifying framework for flows and diffusions via $I_t = \alpha_t I_0 + \beta_t I_1$
 
+## 2024
+
+- [Flow Map Matching](topics/generative-models/flow-map-matching.md) — Boffi, Albergo & Vanden-Eijnden (Jun 2024); unifying framework for fast diffusion inference; shows progressive distillation, consistency models, and CTMs are special cases of learning the two-time flow map $`F_{s,t}`$
+
 ## 2025
 
 - [Feynman-Kac Steering](topics/generative-models/feynman-kac-steering.md) — Singhal et al. (Jan 2025); inference-time reward alignment for diffusion models via FK-IPS particle resampling, no fine-tuning required

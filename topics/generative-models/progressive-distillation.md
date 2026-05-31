@@ -79,7 +79,7 @@ The model must commit to a specific step count at training time. A model distill
 This is the key limitation that later work addresses:
 
 - **Consistency models** (Song et al., 2023): learn $`X_{t, 0}`$ for any $t$, giving flexible step counts but only mapping to the clean endpoint.
-- **Flow Map Matching** (Boffi, Albergo, Vanden-Eijnden, 2024): learn the two-time flow map $`X_{s,t}`$ for arbitrary $(s, t)$, with both endpoints as explicit network inputs. Step count is chosen post-training. See [Stochastic Interpolants](stochastic-interpolants.md) for the underlying framework.
+- **[Flow Map Matching](flow-map-matching.md)** (Boffi, Albergo, Vanden-Eijnden, 2024): learn the two-time flow map $`X_{s,t}`$ for arbitrary $(s, t)$, with both endpoints as explicit network inputs. Step count is chosen post-training. See [Stochastic Interpolants](stochastic-interpolants.md) for the underlying framework.
 - **MeanFlow** (Geng et al., 2025): learn the average velocity over arbitrary intervals, enabling post-training step count selection via a different parameterization of the same underlying object.
 
 ## Historical Context
@@ -105,4 +105,4 @@ Each round of progressive distillation implicitly learns a flow map over a doubl
 
 $$X_{s,t} = X_{u,t} \circ X_{s,u}$$
 
-is exactly the composition that the teacher provides — the teacher's two steps compose $`X_{s,u}`$ and $`X_{u,t}`$, and the student learns to collapse them into $`X_{s,t}`$. FMM formalizes this observation and shows the flow map can be trained directly without iterative halving, with both endpoints $(s, t)$ as explicit network inputs, within the [stochastic interpolants](stochastic-interpolants.md) framework. Progressive distillation is recovered as a specific training schedule within FMM.
+is exactly the composition that the teacher provides — the teacher's two steps compose $`X_{s,u}`$ and $`X_{u,t}`$, and the student learns to collapse them into $`X_{s,t}`$. [FMM](flow-map-matching.md) formalizes this observation and shows the flow map can be trained directly without iterative halving, with both endpoints $(s, t)$ as explicit network inputs, within the [stochastic interpolants](stochastic-interpolants.md) framework. Progressive distillation is recovered as a specific training schedule within FMM.
