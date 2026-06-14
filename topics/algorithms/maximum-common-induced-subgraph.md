@@ -11,7 +11,7 @@ tags: [graphs, graph-theory, subgraph-matching, clique, modular-product, Bron-Ke
 Given two graphs $G$ and $H$, find the largest subgraph that appears in both — the **maximum common induced subgraph** (MCIS).
 "Induced" means the match must preserve both edges *and* non-edges: two vertices that are connected in $G$ must be connected in $H$, and two vertices that are not connected in $G$ must not be connected in $H$.
 
-This problem is NP-hard.
+This problem is NP-hard (see [P versus NP](p-versus-np.md) for the complexity theory background).
 But it reduces cleanly to another well-studied NP-hard problem — maximum clique — via the modular product graph.
 
 
