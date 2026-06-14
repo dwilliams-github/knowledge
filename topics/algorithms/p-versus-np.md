@@ -538,7 +538,7 @@ is telling which regime you're in.
 
 ## 16. The diagram
 
-![P / NP / NP-complete / NP-hard — Euler diagram, both panels](../../images/p-versus-np-complexity-diagram.svg)
+![P / NP / NP-complete / NP-hard — Euler diagram, both panels](../../images/p-versus-np-complexity-diagram.png)
 
 *[Behnam Esfahbod](https://commons.wikimedia.org/wiki/File:P_np_np-complete_np-hard.svg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)*
 
