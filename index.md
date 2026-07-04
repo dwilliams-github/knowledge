@@ -28,3 +28,7 @@
 ## 2025
 
 - [Feynman-Kac Steering](topics/generative-models/feynman-kac-steering.md) — Singhal et al. (Jan 2025); inference-time reward alignment for diffusion models via FK-IPS particle resampling, no fine-tuning required
+
+## 2026
+
+- [TimeGS](topics/generative-models/time-gs.md) — Wang et al. (Mar 2026); time series forecasting via 2D period reshaping and a fixed-dictionary Gaussian decoder; critical reading including LatentTSF detour
