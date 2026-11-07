@@ -13,11 +13,14 @@ Always convert arXiv IDs to clickable markdown links. Applies to both front matt
 
 ## Index Organization
 
-`index.md` has three kinds of sections:
+`index.md` has four kinds of sections:
 
 - **`## Foundations`** — ML/generative-model concepts with no single publication date (surveys, foundational math).
 - **`## Algorithms`** — algorithm entries (graph theory, data structures, etc.). These are concept-based, not paper-based.
+- **`## Reinforcement Learning`** — RL concept and history entries in `topics/reinforcement-learning/`, including the RL glossary. Paper-centric RL entries still go in the year sections.
 - **`## YYYY` year sections** — paper-centric entries, sorted chronologically within each year by publication date.
+
+When an RL article introduces a new term, add it to `topics/reinforcement-learning/rl-glossary.md`.
 
 When adding an ML/paper entry, place it in the correct year section based on the primary paper's publication date, not the date the wiki entry was created.
 

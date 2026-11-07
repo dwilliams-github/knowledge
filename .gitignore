@@ -12,6 +12,10 @@
 # Obsidian (if used)
 .obsidian/
 
+# Drafts: research scratch space (includes copyrighted PDFs); keep only its CLAUDE.md
+drafts/*
+!drafts/CLAUDE.md
+
 # Build outputs (e.g. if ever rendered to HTML)
 _site/
 out/

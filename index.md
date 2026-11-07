@@ -1,15 +1,20 @@
 # Index
 
-<!-- ML/paper entries are organized by publication year; algorithm entries go in ## Algorithms; foundational ML concepts go in ## Foundations. -->
+<!-- ML/paper entries are organized by publication year; algorithm entries go in ## Algorithms; RL concept/history entries go in ## Reinforcement Learning; foundational ML concepts go in ## Foundations. -->
 
 ## Algorithms
 
 <!-- Entries sorted alphabetically by concept name. -->
 
+- [Graph Products](topics/algorithms/graph-products.md) — Cartesian, tensor, strong, lexicographic, and modular products; edge predicates, edge counts, adjacency matrix decompositions, and the $P_3$ worked example
 - [Graph Theory Glossary](topics/algorithms/graph-theory-glossary.md) — definitions of core graph-theoretic terms: graph, adjacency, degree, path, bipartite, adjacency matrix, and product-specific vocabulary
 - [Maximum Common Induced Subgraph](topics/algorithms/maximum-common-induced-subgraph.md) — reduction to maximum clique via the modular product; Bron–Kerbosch algorithm; complexity and practical seed-ordering heuristics
-- [Graph Products](topics/algorithms/graph-products.md) — Cartesian, tensor, strong, lexicographic, and modular products; edge predicates, edge counts, adjacency matrix decompositions, and the $P_3$ worked example
 - [P versus NP](topics/algorithms/p-versus-np.md) — complexity classes, reductions, NP-completeness, the halting problem, SAT, and the physics of hardness; includes glossary
+
+## Reinforcement Learning
+
+- [Origins of Reinforcement Learning](topics/reinforcement-learning/rl-origins.md) — two roots (psychology and optimal control) plus learning automata; Minsky (1961) names the problem, Sutton (1984) defines the field
+- [Reinforcement Learning Glossary](topics/reinforcement-learning/rl-glossary.md) — core RL terms; grows with each RL article
 
 ## Foundations
 
